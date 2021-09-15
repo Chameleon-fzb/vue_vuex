@@ -10,6 +10,7 @@ const state = {
 //? 2.创建一个actions , 值为一个对象 包含:n个响应组件"动作"的函数
 const actions = {
 	increase(context, value) {
+		// ?context 是一个mini版的$store 要使用context.commit()去通知mutations加工状态
 		console.log(value)
 		context.commit('INCREASE', value)
 	},
@@ -17,9 +18,15 @@ const actions = {
 		context.commit('DECREASE', value)
 	},
 	increaseAsync(context, value) {
+		console.log(context)
 		setTimeout(() => {
 			context.commit('INCREASE_ASYNC', value)
 		}, 500)
+	},
+	increaseOdd(context, value) {
+		if (context.state.sum % 2) {
+			context.commit('INCREASE_ODD', value)
+		}
 	}
 }
 const mutations = {
@@ -30,6 +37,9 @@ const mutations = {
 		state.sum -= value
 	},
 	INCREASE_ASYNC(state, value) {
+		state.sum += value
+	},
+	INCREASE_ODD(state, value) {
 		state.sum += value
 	}
 }

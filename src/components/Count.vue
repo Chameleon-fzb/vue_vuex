@@ -8,7 +8,8 @@
     </select><br/>
     <button @click="increase">+</button>&nbsp;
     <button @click="decrease">-</button>&nbsp;
-    <button @click="increaseAsync">异步加</button>
+    <button @click="increaseAsync">异步加</button>&nbsp;
+    <button @click="increaseOdd">奇数加</button>
   </div>
 </template>
 
@@ -29,6 +30,9 @@
       },
       increaseAsync(){
         this.$store.dispatch("increaseAsync",this.n)
+      },
+      increaseOdd(){
+        this.$store.dispatch("increaseOdd",this.n)
       }
     }
   }
