@@ -11,7 +11,6 @@ const state = {
 const actions = {
 	increase(context, value) {
 		// ?context 是一个mini版的$store 要使用context.commit()去通知mutations加工状态
-		console.log(value)
 		context.commit('INCREASE', value)
 	},
 	decrease(context, value) {
